@@ -40,6 +40,6 @@
 </table>
 <br />
 <br />
-<a href="<%=request.getContextPath() %>/insert.jsp">새 주소 추가</a>
+<a href="<%=request.getContextPath() %>/?a=insert">새 주소 추가</a>
 </body>
 </html>

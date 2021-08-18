@@ -16,12 +16,19 @@ import com.phonebook.vo.PhoneBookVO;
 public class ControllerServlet extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-		PhoneBookDAO dao = new PhoneBookDAOImpl();
-		List<PhoneBookVO> list = dao.getList();
-		req.setAttribute("list", list);
-		RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp");
-		rd.forward(req, resp);
+		String actionName = req.getParameter("a");
+		if("insert".equals(actionName)) {
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/phonebook/insert.jsp");
+			rd.forward(req, resp);
+		} else {
+			PhoneBookDAO dao = new PhoneBookDAOImpl();
+			List<PhoneBookVO> list = dao.getList();
+			req.setAttribute("list", list);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/index.jsp");
+			rd.forward(req, resp);
+		}
+		
+		
 
 	}
 
