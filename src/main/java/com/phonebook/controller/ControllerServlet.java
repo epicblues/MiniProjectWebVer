@@ -24,7 +24,7 @@ public class ControllerServlet extends HttpServlet {
 			PhoneBookDAO dao = new PhoneBookDAOImpl();
 			List<PhoneBookVO> list = dao.getList();
 			req.setAttribute("list", list);
-			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/modal.jsp");
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/includes/modal.jsp");
 			rd.forward(req, resp);
 		} else {
 			PhoneBookDAO dao = new PhoneBookDAOImpl();

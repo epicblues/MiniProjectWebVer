@@ -9,19 +9,21 @@
 <jsp:param value="목록" name="message"/>
 </jsp:include>
 <br />
-	<div class="alert-primary alert-info alert-dismissable fade show">
+	
 	
 	
 	<form action="<%=request.getContextPath() %>/?a=search" method="POST">
-		<div class="form-row row align-items-center">
-			<div class= "form-group col-md-6">
+		<div class="row"></div>
+		<div class="form-row row" style="background-color:pink;">
+			<div class= "col-4"></div>
+			<div class= "form-group col" >
 				<label for="search">검색어</label>
 				<input type="text" name="search" id="search" />
 				<input type="submit" value="검색" class="btn-primary">
 			</div>	
 		</div>
 	</form>
-	</div>
+	
 	
 	
 	
@@ -58,38 +60,15 @@
 
 <br />
 <br />
-<button class="btn-outline-primary" data-target="#insertForm" data-toggle="modal">주소 추가(modal ver)</button>
-<a class="" href="<%=request.getContextPath() %>/?a=insert">새 주소 추가</a>
-
-<div class = "modal fade" id="insertForm" tabindex="-1">
-	<div class = "modal-dialog">
-		<div class="modal-content">
-			<div class="modal-header"> 새 주소 등록 <button class="btn-outline-warning" data-dismiss="modal">&times;</button></div>
-			<div class="modal-body"> 
-			<form name="insert">
-				<div class="form-row row">
-					<label for="name">이름</label>
-					<input type="text" class="form-control" id="name" name="name"/>
-				</div>
-				<div class="form-row row">
-					<label for="hp">휴대전화</label>
-					<input type="text" class="form-control" id="hp" name="hp"/>
-				</div>
-				<div class="form-row row">
-					<label for="tel">집전화</label>
-					<input type="text" class="form-control" id="tel" name="tel"/>
-				</div>
-				<br/>
-				<div class="form-row row">
-					<input type="submit" value="주소 등록" name="submit" class="btn btn-primary"/>
-				</div>
-			</form>
-				
-			
-			</div>
-		</div>
-	</div>
+<div class="container">
+	<button class="btn-outline-primary btn-lg" data-target="#insertForm" data-toggle="modal" style="float:right">주소 추가</button>
 </div>
+
+<jsp:include page="/WEB-INF/views/includes/modalform.jsp" />
+
+
+
+
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -121,6 +100,7 @@
 				const container = document.querySelector('.container-fluid');
 				// List를 표시하는 Container 클래스의 내부 HTML을 ajax로 받은 HTML로 바꾼다
 				container.innerHTML = newHtml;
+				document.querySelector('[data-dismiss="modal"]').click();
 				
 			},
 			failure:function(data) {

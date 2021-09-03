@@ -22,8 +22,9 @@
 
 <header>
 	<nav class="navbar navbar-expand-lg bg-dark">
-		<div class="row"><span class="text-light">주소록 Servlet</span></div>
-		<div class="row-6 text-light"><%=message + " " + search %></div>
+		<div class="row-4"></div>
+		<div class="row-4"><span class="text-light text-lg">주소록 Servlet</span></div>
+		<div class="row-4 text-light text-lg"><%=message + " " + search %></div>
 	</nav>
 	
 		
