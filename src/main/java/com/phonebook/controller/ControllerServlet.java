@@ -20,6 +20,12 @@ public class ControllerServlet extends HttpServlet {
 		if("insert".equals(actionName)) {
 			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/phonebook/insert.jsp");
 			rd.forward(req, resp);
+		} else if("modal".equals(actionName)){
+			PhoneBookDAO dao = new PhoneBookDAOImpl();
+			List<PhoneBookVO> list = dao.getList();
+			req.setAttribute("list", list);
+			RequestDispatcher rd = getServletContext().getRequestDispatcher("/WEB-INF/views/modal.jsp");
+			rd.forward(req, resp);
 		} else {
 			PhoneBookDAO dao = new PhoneBookDAOImpl();
 			List<PhoneBookVO> list = dao.getList();
@@ -44,7 +50,8 @@ public class ControllerServlet extends HttpServlet {
 			PhoneBookVO vo = new PhoneBookVO(name, hp, tel);
 			boolean result = dao.insert(vo);
 			if (result) {
-				resp.sendRedirect(req.getContextPath() + "/");
+				
+				resp.sendRedirect(req.getContextPath() + "/?a=modal");
 			}
 		} else if ("delete".equals(actionName)) {
 			Long id = Long.parseLong(req.getParameter("id"));
